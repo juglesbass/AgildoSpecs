@@ -14,6 +14,7 @@ from PyQt6.QtCore import Qt, QThread, pyqtSignal, QSettings, QTimer
 from PyQt6.QtGui import QFont, QGuiApplication
 
 from agildo_specs import VERSAO_APP
+from agildo_specs.icones import icone_specs
 from agildo_specs.coletor import (
     DadosHardware, coletar_hardware, coletar_sensores, total_ram_texto, ModuloRam,
     gpu_resumo_texto,
@@ -93,6 +94,7 @@ class JanelaPrincipal(QMainWindow):
         self._timer_sensores.setInterval(1500)
         self._timer_sensores.timeout.connect(self._tick_sensores)
         self.setWindowTitle(f"Agildo Specs v{VERSAO_APP}")
+        self.setWindowIcon(icone_specs())
         self.resize(900, 700)
         self._montar_ui()
         self._aplicar_tema(self.settings.value("tema_escuro", True, type=bool))

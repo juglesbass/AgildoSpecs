@@ -1,14 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 512 512">
   <defs>
-    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#06b6d4"/>
-      <stop offset="100%" stop-color="#7c3aed"/>
+    <linearGradient id="fundo" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1028"/>
+      <stop offset="50%" stop-color="#141414"/>
+      <stop offset="100%" stop-color="#0d1f2d"/>
     </linearGradient>
+    <linearGradient id="borda" x1="0%" y1="50%" x2="100%" y2="50%">
+      <stop offset="0%" stop-color="#bd00ff"/>
+      <stop offset="100%" stop-color="#00e5ff"/>
+    </linearGradient>
+    <linearGradient id="chip" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d2d35"/>
+      <stop offset="100%" stop-color="#1a1a22"/>
+    </linearGradient>
+    <linearGradient id="brilho" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#00e5ff" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#bd00ff" stop-opacity="0.7"/>
+    </linearGradient>
+    <filter id="sombra" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#000" flood-opacity="0.45"/>
+    </filter>
   </defs>
-  <rect x="32" y="32" width="448" height="448" rx="96" fill="url(#bg)"/>
-  <rect x="196" y="88" width="24" height="200" rx="8" fill="#1e293b"/>
-  <rect x="196" y="248" width="24" height="120" rx="8" fill="#ef4444"/>
-  <circle cx="208" cy="120" r="36" fill="none" stroke="#f8fafc" stroke-width="14"/>
-  <circle cx="300" cy="400" r="28" fill="none" stroke="#ffffff" stroke-width="10"/>
+  <!-- Fundo arredondado -->
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="url(#fundo)" filter="url(#sombra)"/>
+  <rect x="24" y="24" width="464" height="464" rx="108" fill="none" stroke="url(#borda)" stroke-width="10"/>
+  <!-- PCB / trilhas decorativas -->
+  <path d="M88 160 H140 M88 200 H120 M88 240 H136" stroke="#bd00ff" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+  <path d="M424 272 H372 M424 312 H404 M424 352 H368" stroke="#00e5ff" stroke-width="6" stroke-linecap="round" opacity="0.5"/>
+  <circle cx="88" cy="160" r="8" fill="#bd00ff"/>
+  <circle cx="424" cy="352" r="8" fill="#00e5ff"/>
+  <!-- CPU (chip central) -->
+  <g transform="translate(256 248)">
+    <rect x="-88" y="-88" width="176" height="176" rx="20" fill="url(#chip)" stroke="#444" stroke-width="4"/>
+    <rect x="-72" y="-72" width="144" height="144" rx="12" fill="#121218" stroke="#555" stroke-width="2"/>
+    <!-- Grade interna (nucleos) -->
+    <rect x="-48" y="-48" width="40" height="40" rx="6" fill="#bd00ff" opacity="0.85"/>
+    <rect x="8" y="-48" width="40" height="40" rx="6" fill="#00e5ff" opacity="0.75"/>
+    <rect x="-48" y="8" width="40" height="40" rx="6" fill="#00e5ff" opacity="0.6"/>
+    <rect x="8" y="8" width="40" height="40" rx="6" fill="#bd00ff" opacity="0.5"/>
+    <!-- Pinos do chip -->
+    <g fill="#888">
+      <rect x="-108" y="-60" width="16" height="12" rx="3"/>
+      <rect x="-108" y="-24" width="16" height="12" rx="3"/>
+      <rect x="-108" y="12" width="16" height="12" rx="3"/>
+      <rect x="-108" y="48" width="16" height="12" rx="3"/>
+      <rect x="92" y="-60" width="16" height="12" rx="3"/>
+      <rect x="92" y="-24" width="16" height="12" rx="3"/>
+      <rect x="92" y="12" width="16" height="12" rx="3"/>
+      <rect x="92" y="48" width="16" height="12" rx="3"/>
+      <rect x="-60" y="-108" width="12" height="16" rx="3"/>
+      <rect x="-24" y="-108" width="12" height="16" rx="3"/>
+      <rect x="12" y="-108" width="12" height="16" rx="3"/>
+      <rect x="48" y="-108" width="12" height="16" rx="3"/>
+      <rect x="-60" y="92" width="12" height="16" rx="3"/>
+      <rect x="-24" y="92" width="12" height="16" rx="3"/>
+      <rect x="12" y="92" width="12" height="16" rx="3"/>
+      <rect x="48" y="92" width="12" height="16" rx="3"/>
+    </g>
+  </g>
+  <!-- Barras benchmark (estilo CPU-Z) -->
+  <g transform="translate(128 380)">
+    <rect x="0" y="32" width="28" height="56" rx="6" fill="url(#brilho)"/>
+    <rect x="40" y="12" width="28" height="76" rx="6" fill="#bd00ff" opacity="0.9"/>
+    <rect x="80" y="0" width="28" height="88" rx="6" fill="#00e5ff"/>
+    <rect x="120" y="20" width="28" height="68" rx="6" fill="#bd00ff" opacity="0.65"/>
+  </g>
+  <!-- Letra S discreta -->
+  <text x="256" y="118" text-anchor="middle" font-family="sans-serif" font-size="72" font-weight="bold" fill="#ffffff" opacity="0.92">S</text>
 </svg>
